@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Make Emacs Cool Again"
-date:   2019-07-26 15:52:57 -0500
+date:   2019-07-26 05:52:57 -0500
 categories: emacs
 ---
 
@@ -14,4 +14,4 @@ In practice, however, new users to Emacs feel that the editor is miles behind ev
 Therein lies the problem. While a single global namespace for everything means that adding a new feature to the running editor takes a few seconds, other people's packages clash with one another in difficult-to-predict ways, leading to instability and an overall lack of cohesiveness. 
 
 ## The age-old question
-In reality, this issue has nothing to do with Emacs. It's a war that's been fought many times throughout computing history. 
+In reality, this issue has nothing to do with Emacs. It's a war that's been fought many times throughout computing history: convention vs. configuration. [Or better put](http://gilesbowkett.blogspot.com/2013/02/the-lie-of-convention-over-configuration.html), curation over configuration. 

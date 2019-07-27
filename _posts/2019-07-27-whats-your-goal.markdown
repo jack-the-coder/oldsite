@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What's your goal? (Beating the Averages returns)"
-date:   2019-07-26 15:52:57 -0500
+date:   2019-07-27 15:52:57 -0500
 categories: philosophy
 ---
 

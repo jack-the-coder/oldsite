@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/snazz
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.snazz.xyz
+  * I am snazz (https://keybase.io/snazz) on keybase.
+  * I have a public key ASD_dDcfOBDqSM53bqFk1D9qdVD8f7zKZpDXnjNSNclPPwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120ff74371f3810ea48ce776ea164d43f6a7550fc7fbcca6690d79e335235c94f3f0a",
+      "host": "keybase.io",
+      "kid": "0120ff74371f3810ea48ce776ea164d43f6a7550fc7fbcca6690d79e335235c94f3f0a",
+      "uid": "21785d7fa4823d34310befd67dbff419",
+      "username": "snazz"
+    },
+    "merkle_root": {
+      "ctime": 1564523626,
+      "hash": "6f45a446a76bbb5a17bc82d7e588fb2ab309490fac20a6d1f7c38f01d920a4555ce9116b8ecee440fc90ddf03713aef2e3878ca3c471915c5147a64d9002ba89",
+      "hash_meta": "89536dfbb497a638ead5dc0ee51d82aa7ceb4fe80a7257a66c92dc6da6db7694",
+      "seqno": 5889739
+    },
+    "service": {
+      "entropy": "4CGKXQOa6tgB5Aa0+sXMVrs0",
+      "hostname": "www.snazz.xyz",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.2.0"
+  },
+  "ctime": 1564523638,
+  "expire_in": 504576000,
+  "prev": "58d7dc6522028a79fd99abd139006713a6441cfe25f49c4960ec4ebbcc7cd9bf",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg/3Q3HzgQ6kjOd26hZNQ/anVQ/H+8ymaQ154zUjXJTz8Kp3BheWxvYWTESpcCBsQgWNfcZSICinn9mavROQBnE6ZEHP4l9JxJYOxOu8x82b/EIJHGb8Y1X4JOfTVyHagK1OsYYumS3Curh9iEWuDYRVJ6AgHCo3NpZ8RAMt0Q7jiBnxOMp7QEwsRPVT6vHHiNX/4TLQBVuFDmAEy/C1JkJ8BmBFfLCZbhRlpGWC4gsLCoo21ZT0s7qLMxDKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIFlmehqRRc4GylHm1qj983N5EzGVhbeXYqQi+u/u6J1co3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/snazz
+
+==================================================================

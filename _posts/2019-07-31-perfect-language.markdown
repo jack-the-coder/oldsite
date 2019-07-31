@@ -32,7 +32,7 @@ So far I simply haven't seen a language that keeps everything in balance. Common
 
 It could be that it's impossible to find an optimal balance between abstraction-ness and the removal of footguns. Go was specifically intended so that it scales to large teams of Google programmers; the language imposed many decisions upon  them to avoid making too many choices that would lead to incompatibility. Outside of Google, this strategy worked, in that it lead to a plethora of compatible libraries for every need. All Go code looked the same and followed the same general semantics. 
 
-Scheme seems to be an interesting compromise. Within an implementation, there's usually only one "correct" way to do something. The entire community for a Scheme implementation rallies behind a single web framework, for instance, instead of eight half-complete, undocumented libraries (like you might see in CL). At the same time, Scheme is much less popular, and it doesn't help that incompatible implementations fragment the ecosystem. 
+Scheme seems to be an interesting compromise. Within an implementation, there's usually only one "correct" way to do something. The entire community for a Scheme implementation rallies behind a single web framework, for instance, instead of eight half-complete, undocumented libraries (like you might see in CL). At the same time, Scheme is not very popular, and it doesn't help that incompatible implementations fragment the ecosystem. 
 
 ## The best we have
 We're not going to get a "perfect" programming language anytime soon. However, I'd like to see a language with the following features, which I think ensure a vibrant future:

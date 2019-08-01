@@ -3,7 +3,67 @@
 ---
 
 @import "minima";
+@import "minima/syntax-highlighting";
 
 * {
   font-family: 'Source Code Pro', 'SF Mono', Menlo, Consolas, monospace;
+}
+$sbase03:    #002b36;
+$sbase02:    #073642;
+$sbase01:    #586e75;
+$sbase00:    #657b83;
+$sbase0:     #839496;
+$sbase1:     #93a1a1;
+$sbase2:     #eee8d5;
+$sbase3:     #fdf6e3;
+$syellow:    #b58900;
+$sorange:    #cb4b16;
+$sred:       #dc322f;
+$smagenta:   #d33682;
+$sviolet:    #6c71c4;
+$sblue:      #268bd2;
+$scyan:      #2aa198;
+$sgreen:     #859900;
+
+body {
+  background-color: $sbase03;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: $sbase0;
+}
+
+.site-title, .site-title:visited {
+  color: $sbase0;
+}
+
+a, a:hover, a:visited {
+  color: $sblue;
+}
+
+.post-link, .post-link:visited, .post-link:hover {
+  color: $sblue;
+}
+
+.page-link, .page-link:visited, .page-link:hover {
+  color: $sbase0;
+}
+
+.post-content {
+  color: $sbase1;
+}
+
+.site-header {
+  border-top: 10px solid $sblue;
+  border-bottom: 1px solid $sbase0;
+}
+
+.site-footer {
+  border-top: 1px solid $sbase0;
+}
+
+hr {
+  height: 0.5px;
+  background-color: $sbase0;
+  color: $sbase0;
 }

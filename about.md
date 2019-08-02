@@ -12,4 +12,4 @@ Hello! Below you can find a variety of my online accounts and profiles.
 - [snazz on GitLab](https://gitlab.com/snazz)
 - [snazz on Keybase](https://keybase.io/snazz) (As cryptographic proof that I am the same person on HN, GitHub, and this website, see my Keybase profile)
 
-If you need to contact me, feel free to send an email to `rot13(fanmmlfpurzre@bhgybbx.pbz)` or initiate a Keybase chat. 
+If you would like to contact me, feel free to send an email to `rot13(fanmmlfpurzre@bhgybbx.pbz)` or initiate a Keybase chat. I'd love to hear from you!

@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "PGP has got to die (for signing, anyway)"
+date:   2019-08-05 15:52:57 -0500
+categories: security
+---
+
+Earlier today, I decided I wanted to test a new web application of mine from the perspective of a Tor user. I figured that such a task wouldn't be the most difficult thing in the world---non-technical political activists and journalists are recommended to use Tor all the time to circumvent censorship. The process started in an unassuming manner: I cloned the Git repo from the Arch User Repository that contained the `tor-browser` packaging scripts, skimmed the files to make sure there wasn't anything blatantly malicious, and started the `makepkg` process on its way. 
+
+I hadn't read the comment at the top of the `PKGBUILD` file (which, in retrospect, was in a pretty obvious position) reminding me to import the Tor Browser Developers signing key into my GPG keyring. So after waiting over 20 minutes to download a 70 MB archive (not sure who to blame for that, given that my connection is pretty fast), I ran the GPG command at the top of that file and waited. After a couple minutes, GPG helpfully reminded me that my connection with the MIT PGP keyserver had timed out. Okay. Strange, but maybe it's just down? 
+
+I tried the next keyserver I could find from a quick DuckDuckGo search, but no dice. The third time around, after an excruciatingly long wait, GPG announced that the file was too large for it to process. That's helpful. 
+
+Since I had WeeChat open, I joined `#archlinux` and asked there. I was told that the "tor-browser signing key is bork" and that the GnuPG people can't do anything about it. Apparently it had to do with the issues outlined in this [article](https://gist.github.com/rjhansen/67ab921ffb4084c865b3618d6955275f) from about a month ago that got [some attention](https://news.ycombinator.com/item?id=20312826) on HN. At the time, I had glanced at the article and assumed that it was of little importance to my day-to-day computing, but it took only 37 days for me to run into an issue related to it. Basically, SKS keyservers are append-only for certificate signatures, which means that a certificate can amass thousands of signatures made by anyone with access to GPG. As more and more signatures are added to a certificate, the GPG client gets slower and slower until it simply cannot handle the volume of signatures, and either errors out or destroys your GnuPG installation. 
+
+As it turns out, that Tor Browser Developers signing key had over 120,000 of these certificate signatures as of early July. Honestly, that's an awfully low number to lock up GPG; it's apparently only 10 MB of data on disk.
+
+The GnuPG developers' solution: [stop using keyservers altogether](https://gist.github.com/rjhansen/67ab921ffb4084c865b3618d6955275f#mitigations). 
+
+## That's the least of the issues with GPG (and PGP as a whole)
+GnuPG itself is a very poorly-written program that uses crypto that might have been hip in 1994. It's so complex (both the protocol *and* the implementation) that hardly anyone can understand it (leading to stuff like [Efail](https://news.ycombinator.com/item?id=17064129)), it solves a ton of problems very poorly, it's extremely difficult to use (even for people who are plenty competent), it is conceptually linked to the idea of long-term keys (which [aren't a great idea for 99% of applications](https://blog.filippo.io/giving-up-on-long-term-pgp/)), it's missing practically required features like forward secrecy, and [on and on and on](https://latacora.micro.blog/2019/07/16/the-pgp-problem.html). And when one of these issues is exposed, the maintainers [get all defensive](https://news.ycombinator.com/item?id=20314188) and take personal offence, instead of acknowledging the issue and fixing it. 
+
+None of this should be news to anyone in the biz. For decades, PGP has been just barely been good enough for it to be used throughout the computing industry. It's still the standard way to send vulnerability disclosure emails, sign packages for Linux distributions, and is occasionally used to encrypt files. 
+
+But now, after the keyserver denial-of-service vulnerability is in wide use, much of the infrastructure surrounding the PGP protocol for all of these uses is unusable. While this doesn't affect how most people use PGP (which is probably through distribution package managers), it will hopefully push more people and projects towards better solutions that don't rely on 90s crypto combined with nearly 30 years of accumulated cruft. 
+
+## It's a social issue
+To replace PGP for package signing (which is where it is most used), the work of convincing projects to adopt to a new solution is the only real issue. From a technical standpoint, this usage of PGP can already be replaced by [OpenBSD's signify(1)](https://man.openbsd.org/signify.1) or the compatible [Minisign](https://jedisct1.github.io/minisign/) from the author of [libsodium](https://download.libsodium.org/doc/). One can expect the OpenBSD folks to have come up with a good solution to the problem and it has proven itself as the method by which they sign their packages. 
+
+I think a gradual deprecation strategy is appropriate for PGP keys in signing uses. The Tor Project would have two signatures alongside their files and the documentation would favor the signify/Minisign key. Linux distributions would replace their current uses of PGP with signify in such a way as to give a long grace period for old stable versions. 
+
+In practice, I think this will take a long time. We'll still be having to deal with PGP years from now, but hopefully it will slowly fade from view as fewer and fewer holdouts continue to sign things with it. As for the users of encrypted emails and the Web of Trust: many are becoming disenchanted with the benefits of the entire rigmarole. I think that [Keybase](https://keybase.io/) solves the same identity management problem much better, not to mention its useful chat and encrypted file storage support.  
+
+I'm legitimately excited to see what the future will bring for replacing these kinds of pile-of-hacks applications that are so ingrained in the FOSS world, especially ones that do things as important as crypto.

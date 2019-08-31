@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Firefox has lots of room to improve if it wants to beat Chrome"
+date:   2019-08-30 05:52:57 -0500
+categories: programming
+---
+
+I've found myself agreeing wholeheartedly with the recent [pushes](https://news.ycombinator.com/item?id=20052623) to get people to switch from Chrome to Firefox. Google keeps pulling [dumb trick](https://news.ycombinator.com/item?id=18064537) after [dumb trick](https://news.ycombinator.com/item?id=20044430) in an attempt to have more control over the web. It's hard not to think that this kind of behavior warrants quitting Chrome and other Google products. But taking a look at [Firefox usage statistics](https://data.firefox.com/dashboard/user-activity), it's pretty obvious that the trend (looking at Monthly Active Users) is going in the wrong direction. This raises some questions: why is Firefox usage going down, and what does Mozilla need to do to bring it back up?
+
+How does an average user get started with Firefox?
+
+1. They download it from Mozilla's website, where they're told that Firefox allows them to "start getting the respect [they] deserve with [Mozilla's] family of privacy-first products." So far so good. 
+2. They install it. This process is pretty intuitive. 
+3. They open it. Whoa! That's a lot of stuff in my face. 
+4. They click "Start Browsing" to exit the modal advertising registration for online accounts. 
+5. They close the "Welcome to Firefox" section of the new tab page, which rehashes many of the same things mentioned on Mozilla's website as well as the modal. 
+6. The "Recommended by Pocket" section comes above the fold. Wait, doesn't this feel like one of those sketchy "Trending Articles" ads? Especially the "Sponsored by NextAdvisor" one advertising credit cards with 0% interest rates. 
+7. They may or may not figure out how to remove all the junk on the new tab page. 
+8. They start searching with Google (either through the address bar or the "Search the Web" box on the new tab page). 
+
+What privacy has the average Joe user gained by switching to Firefox? None. They're still using Google Search and (most likely) other Google products. They're being subjected to misleading ads on their *new tab page*. From their perspective, installing Firefox was a pointless hassle. 
+
+For comparison, here's the Chrome install process:
+
+1. They download it from Google's website. 
+2. They install it.
+3. They open it. There's a fancy animation and a button to sign in with their Google account, but choosing not to allows them to browse immediately. 
+4. They search with Google and begin their browsing session. 
+
+I do think that privacy can be a selling point for a web browser. Google has certainly made some user-hostile choices recently, but they aren't visible to the average user. Firefox, on the other hand, appears to have made a number of user-hostile choices right out of the gate, by including sponsored articles on the default new tab page. While I understand that they have to make money somehow, it feels like a bit of a contradiction to be telling my friends and family to install adblockers and use privacy-respecting software, when the privacy-respecting browser immediately shows them advertisements. 
+
+I have found other annoyances with Firefox (primarily how it selects fonts on Linux compared to Chromium; I have a bunch of fontconfig rules just to coax Firefox into showing the correct font on specific websites when Chromium will do so out of the box), but my biggest beef with it is how difficult it is to convince non-technical relatives to use it when its default configuration appears to fly in the face of its intended goals. At the same time, it's a much easier sell nowadays than it was a few years ago before Quantum was released. On a faster machine, Firefox and Chrome feel pretty close to equal in speed (although Firefox loses to Chrome by about 20 points on Speedometer 2.0 on my machine). 
+
+Another important change that Mozilla needs to make is to move away from Google as their default search engine, both for user privacy and to achieve a diversified means of funding. Google might be the one to end the agreement, considering that Mozilla's marketing has been quite negative towards Google and their products. This seems like an extremely difficult but necessary change, considering [how much of their income comes from Google](https://www.mozilla.org/en-US/foundation/annualreport/2016/). 
+
+---
+While I continue to use and support Firefox, Mozilla shouldn't be trying to go after people like me. It's the non-technical users, who are convinced by their technical relatives to install it, who need to be convinced. At the moment, there's a lot more that they need to do to protect their own privacy than simply installing Firefox. 

@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "It's still possible to make money on gig marketplaces"
+date:   2020-02-01 15:52:57 -0500
+categories: business
+---
+Gig marketplaces (Fiverr being the largest and most significant) offer an interesting view at free-market microeconomics. Prices are a race to the bottom in nearly every market category. Sellers oftentimes prioritize the volume of sales over the quality of what they produce; buyers have to weed out hundreds of too-good-to-be-true offerings to find a service that meets their needs. Most potential buyers find gigs via the search engine, so gaming the search algorithm to appear higher in results is an important element of a successful seller strategy. 
+
+Since there are so many low-price gigs flooding the market (that usually are of poor quality), it's impossible to compete on price. Therefore, you have to differentiate yourself by finding and monopolizing a niche. For example, there are quite a few gigs on Fiverr promising software development for concerningly low prices (think $5 for an entire iOS app or $15 for a website)---you would probably automatically appear more legitimate just by raising your prices. 
+
+It's also important to think about the system from a buyer's perspective: if I'm looking for a complete app in two weeks, I'm probably not going to even consider Fiverr because of how many sketchy cheap services there are. If I do look there, I'm going to want to limit my search to sellers who have been vetted by the company itself or who have a significant portfolio. Similarly, the clients who are willing to pay a reasonable amount of money probably have more realistic expectations in other regards, like completion time and tipping.
+
+Software development also usually requires an extended period of good communication between freelancers and their clients, something that is somewhat hard to gauge just from looking at gig descriptions. For this reason, programming probably isn't the most profitable option from the perspective of a seller. Being good at written communication in English is important for any gig larger than a one-page website, yet it's difficult to distinguish yourself on this skill because most buyers looking to purchase a larger project will gravitate towards "serious" freelancing platforms like Upwork instead of cheaper gig sites.
+
+That's why I decided to open a Fiverr account as a little experiment---to figure out if I would be able to find a niche and differentiate myself without working unreasonably long hours for bad clients who expect perfection but pay pocket change. I spent about an hour or two one weekend in December looking at my competition in various categories: programming, photography, technical writing. I thought that I could be competitive in all of these categories, but it didn't take long for me to realize that there was a gap waiting to be filled at the intersection of good writing and technical knowledge. As with programming, "serious" companies still choose "serious" freelancing platforms. However, individual articles and blog posts are much smaller monetary investments for the customer and much smaller time investments for the freelancer. Buyers are far more willing to try less-distinguished writers than they are programmers. 
+
+My experiment isn't over yet. Since I hit publish on my first gig shortly before Christmas, I didn't expect anyone to be in the market for a writing project until after the New Year began. During what was most people's holiday vacation, I got a few spammy-looking messages asking me to add them on Skype to discuss a project (something that is against the Fiverr ToS and opens me up to a lot more risk). These people target new sellers who aren't yet familiar with the rules in an attempt to find someone to string along. I reported all those messages and waited for a potential buyer to find my gig. 
+
+Analytics data from January were pretty bleak: fewer than ten people had even clicked on my gig, let alone made a purchase. Out of the blue, I received a purchase from a legitimate buyer who had written clear and easy-to-follow requirements for the article. He was a far better customer than stories I had read about Fiverr buyers had led me to believe, which made me very happy to get working right away on an article for him. I delivered it the same day I received the order, which my customer was happy to see. He ordered another one the very next day. 
+
+Overall, I'm quite pleased with the preliminary results of my experiment. This initial data point supports my hypothesis that most of Fiverr's poor reputation amongst sellers stems from prices set too low and competition in race-to-the-bottom market segments. The biggest surprise is how high my conversion rate is as of this writing---only 26 impressions but two purchases in the last seven days? This statistic makes the notoriety of these marketplaces for prioritizing quantity over quality seem less well-founded.
+
+I haven't yet had the chance to study the search algorithm and the way that reviews and seller levels factor into it, so I can't make too many comments on that. I will say that I'm impressed that the buyer who ended up purchasing my services waded through however many pages of increasingly-forgotten gigs to eventually choose mine.
+
+---
+
+If you enjoyed this article and would like one of your own, I'm offering a 20% ($5) discount on 500-word articles until the end of February: https://www.fiverr.com/snazzz/write-articles-and-blog-posts-on-computer-related-topics

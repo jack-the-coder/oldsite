@@ -25,38 +25,89 @@ $sblue:      #268bd2;
 $scyan:      #2aa198;
 $sgreen:     #859900;
 
-body {
-  background-color: $sbase03;
-  color: $sbase0;
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: $sbase3;
+    color: $sbase03;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $sbase03;
+    color: $sbase0;
+  }
 }
 
-h1,h2,h3,h4,h5,h6 {
-  color: $sbase0;
+@media (prefers-color-scheme: light) {
+  h1,h2,h3,h4,h5,h6 {
+    color: $sbase00;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  h1,h2,h3,h4,h5,h6 {
+    color: $sbase0;
+  }
 }
 
-.site-title, .site-title:visited {
-  color: $sbase0;
+@media (prefers-color-scheme: light) {
+  .site-title, .site-title:visited {
+    color: $sbase00;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .site-title, .site-title:visited {
+    color: $sbase0;
+  }
 }
 
-a, a:hover, a:visited {
-  color: $sblue;
+@media (prefers-color-scheme: light) {
+  a, a:hover, a:visited {
+    color: $smagenta;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  a, a:hover, a:visited {
+    color: $sblue;
+  }
 }
 
-.post-link, .post-link:visited, .post-link:hover {
-  color: $sblue;
+@media (prefers-color-scheme: light) {
+  .post-link, .post-link:visited, .post-link:hover {
+    color: $smagenta;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .post-link, .post-link:visited, .post-link:hover {
+    color: $sblue;
+  }
 }
 
 .site-nav .page-link, .page-link:visited, .page-link:hover {
   color: $sbase0;
 }
 
-.post-content, p.post-meta {
-  color: $sbase1;
+@media (prefers-color-scheme: light) {
+  .post-content, p.post-meta {
+    color: $sbase01;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .post-content, p.post-meta {
+    color: $sbase1;
+  }
 }
 
-.site-header {
-  border-top: 10px solid $sblue;
-  border-bottom: 1px solid $sbase0;
+@media (prefers-color-scheme: light) {
+  .site-header {
+    border-top: 10px solid $smagenta;
+    border-bottom: 1px solid $sbase0;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .site-header {
+    border-top: 10px solid $sblue;
+    border-bottom: 1px solid $sbase0;
+  }
 }
 
 .site-footer {
@@ -73,11 +124,21 @@ hr {
   color: $sbase0;
 }
 
-pre, code {
-  border: 1px solid $sbase03;
-  border-radius: 0px;
-  background-color: $sbase02;
-  font-family: 'SF Mono', 'Menlo', 'Source Code Pro', 'Noto Mono', monospace;
+@media (prefers-color-scheme: light) {
+  pre, code {
+    border: 1px solid $sbase3;
+    border-radius: 0px;
+    background-color: $sbase2;
+    font-family: 'SF Mono', 'Menlo', 'Source Code Pro', 'Noto Mono', monospace;
+  }  
+}
+@media (prefers-color-scheme: dark) {
+  pre, code {
+    border: 1px solid $sbase03;
+    border-radius: 0px;
+    background-color: $sbase02;
+    font-family: 'SF Mono', 'Menlo', 'Source Code Pro', 'Noto Mono', monospace;
+  }  
 }
 
 .highlight {

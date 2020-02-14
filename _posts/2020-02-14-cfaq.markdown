@@ -1,0 +1,125 @@
+---
+layout: post
+title: "My C FAQ: things I wished I had learned a while ago"
+date: 2020-02-14 15:52:57 -0500
+categories: programming
+---
+The fact that C is the dominant programming language for everything low-level is an interesting historical oddity. Even though there were far better languages around when C was created (and now, of course), C still somehow ended up being what everything was written in. For that reason, having a good understanding of some of C's intricacies is important to be able to do security research or just maintain software written in C. There are far more complete resources on this topic, like [the original C FAQ](http://c-faq.com/); the purpose of this post is to address specific things *I* would have liked to have known when I was starting out with C. 
+
+The intended audience of this post is someone who has programming experience in another language and has messed around in C but wants to expand their knowledge of how it really works under the hood. 
+
+***Note**: This is an unfinished, living document. You're reading version 0.1.*
+
+*Find an error or want to add something? Please email [cfaq@snazz.xyz](mailto:cfaq@snazz.xyz). Thanks!*
+
+## What does a C program look like in memory?
+Programs running on modern systems have their own virtual address spaces. Each process on a 32-bit x86 machine, for instance, will have 2³² one-byte memory addresses (or 4 GiB), ranging from 0x00000000 to 0xFFFFFFFF. There are plenty of visualizations floating around of what a C program looks like in memory, so here's one from [this site](https://aticleworld.com/memory-layout-of-c-program/):
+```
+High Addresses ---> .----------------------.
+                    |      Environment     |
+                    |----------------------|
+                    |                      |   Functions and variables are declared
+                    |         Stack        |   on the stack.
+base pointer ->     | - - - - - - - - - - -|
+                    |           |          |
+                    |           v          |
+                    :                      :
+                    .                      .   The stack grows down into unused space
+                    .         Empty        .   while the heap grows up. 
+                    .                      .
+                    .                      .   (other memory maps do occur here, such 
+                    .                      .    as dynamic libraries and different memory
+                    :                      :    allocations)
+                    |           ^          |
+                    |           |          |
+ brk point ->       | - - - - - - - - - - -|   Dynamic memory is declared on the heap
+                    |          Heap        |
+                    |                      |
+                    |----------------------|
+                    |          BSS         |   Uninitialized data (BSS)
+                    |----------------------|   
+                    |          Data        |   Initialized data (DS)
+                    |----------------------|
+                    |          Text        |   Binary code
+Low Addresses ----> '----------------------' 
+```
+Note that this memory layout is not necessarily accurate on non-Intel architectures.
+### What's in each section? 
+#### Stack
+This chunk of memory is called the stack because it is a LIFO (last-in-first-out) stack. Aside from local variables (like anything you declare with `int thing = 0;`), the arguments to a function and its return value are stored on the stack. Each function gets its own stack frame containing its local variables, return address, and parameters (in that order from high to low). The LIFO stack data structure makes sense when you think about the semantics of function calling in C and most other programming languages. Eli Bendersky has a couple of articles about the [stack on x86](https://eli.thegreenplace.net/2011/02/04/where-the-top-of-the-stack-is-on-x86/) and [x86_64](https://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64) that do a better job explaining this. 
+
+#### Empty memory
+Because of the virtual address space abstraction, operating systems don't need to allocate the entire virtual address space in physical memory (if they did, each process would require the full 4GiB on x86 and 4*2³² GiB on x86_64). As the stack and heap grow, from opposite ends of the program's address space, more memory is requested by the allocator (`malloc()`, etc.) and given to the program. Since the stack and heap both grow into this same region, it's possible that they will collide, resulting in a stack overflow, `malloc()` returning `NULL`, a segmentation fault, or possibly a silent memory corruption bug. The latter is far more likely with complex multithreaded programs, so use the `-fstack-check` compiler flag to detect stack-heap collisions. 
+
+#### Heap
+Any chunk of memory allocated with `malloc()` (known as dynamic memory) or another allocation function comes from the heap. The heap is limited in size only by the available memory, unlike the stack. The `brk()` and `sbrk()` system calls are used to manage the size of the heap (on Unix-like OSs).
+
+#### Uninitialized data/BSS
+Any global or static variable you declare but don't initialize (like `int i;` instead of `int i = 12;`) ends up in the BSS section of the data segment.
+
+#### Initialized data/DS
+The initialized data segment (often referred to as just "data") is where global and static variables that have been initialized reside.
+
+#### Text
+This is where the actual machine code is stored.
+
+**Review:** global and static variables (as well as constants) are stored in the data segment, local variables (those that are declared and defined within functions) are stored in the stack, and anything declared with an allocator is in the heap. 
+
+### What puts all this in memory?
+The program loader (`execve` on Linux) loads the code and data to memory and jumps to the first instruction. This topic will be covered in more detail in the next few sections.
+
+## Anatomy of an ELF binary
+ELF is the binary format used by modern Linux. A long time ago, a.out binaries were the standard on Unix-like systems, but not anymore. [This article](https://kishuagarwal.github.io/life-of-a-binary.html) explains the full process of going from C code to an ELF binary in lots of detail. I highly recommend reading it directly, so I won't summarize it here.
+
+## Pitfalls and surprising behavior
+C is famous for making it easy to slip up, from buffer overflows to use-after-free to format string vulnerabilities. For that reason (and because it can often be unproductive), you should probably think twice before starting a project in C that could be written in a less tricky language. This part is a non-comprehensive list of common or subtle errors that might seem obvious to the experienced C programmer but trip up newbies all the time. The list is in no particular order. 
+
+### `time_t` doesn't always count non-leap seconds from 1970
+Most systems out there today make `time_t` a (signed) `int` or `long int`. Despite this, the C standard allows for it to be any "arithmetic type"---that means that a `double` would theoretically be an acceptable way to implement `time_t`. More importantly, make sure your software can handle negative `time_t` values, because that's a far more common problem. 
+
+### There are different ways to represent characters used by different libc functions
+The following code looks right (to someone without a whole ton of C experience), but has some fatal bugs:
+```c
+char c;
+
+c = getchar();
+while(c != EOF) {
+  /* do stuff */
+  c = getchar();
+}
+```
+The trouble? `getchar()` returns an `int`, not a `char`. Modern compilers should warn you about implicitly casting `int` to `char` (something like `warning: implicit conversion from 'int' to 'char' changes value...`), but if you weren't paying attention you could cause either a simple bug or a slightly more subtle bug. If `char` is unsigned on your system, the loop would just never finish (`EOF` is a negative number). If it's signed, high numbers become negative and terminate the loop early. 
+
+Replacing `char c;` with `int c;` fixes the issue for all practical purposes, but [one site](https://www.greenend.org.uk/rjk/tech/cfu.html) points out that, while `EOF` is guaranteed by the C specification to be outside the bounds of any `unsigned char`, it is technically possible that `EOF` is a valid character when converted to `int`. If `char` and `int` were the same length (on a 16-bit machine for this example), then `(int)(unsigned char)65535 == -1`, which is `EOF`.
+
+That's probably pretty rare, but here's a solution that would work on the hypothetical machine (copied straight from that page):
+``` c
+int c;
+
+c = getchar();
+while(!feof(stdin) && !ferror(stdin)) {
+  // ...
+  c = getchar();
+}
+```
+
+### `case` statements fall through
+Experienced programmers make sure to find out whether `case` statements fall through when they first learn a new C-like language, but this hold-over from the assembly days still trips up a lot of new developers.
+
+Here's a simple test case demonstrating the issue:
+```c
+switch (something()) {
+case 0:
+  doSomething();
+case 1:
+  doSomethingElse();
+  break;
+case 2:
+  doAThirdThing();
+  break;
+}
+```
+Since I forgot the `break;` after `doSomething();`, both `doSomething()` and `doSomethingElse()` would be called if `something()` returned 0. This behavior was probably somebody's way to approximate what they liked to do in assembly in C, but it has caused countless confusing issues for new C coders.
+
+## MORE WILL BE ADDED
+I figured I might as well post something unfinished instead of toiling away for days before being able to post it in its finished form.

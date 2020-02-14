@@ -15,3 +15,9 @@ Below you can find a few of my online accounts and profiles.
 If you would like to contact me, feel free to send an email to [jack@snazz.xyz](mailto:jack@snazz.xyz) (or any other valid @snazz.xyz address) or initiate a Keybase chat. I'd love to hear from you!
 
 This Jekyll-based website is hosted on GitHub Pages and uses Cloudflare to improve performance and security. If you're on the fence about making your own website, you might like to know that I have spent a grand total of $8 and not a whole lot of time making it operational. I purchased snazz.xyz for two years from Namecheap for the aforementioned princely sum of eight dollars, but GitHub Pages and Cloudflare are both free for my usage. 
+
+If you want hassle-free email hosting, G Suite scales down to as few as one user and has highly configurable mail handling. I'm not worried about Google slurping up private information from my email (the terms and privacy policy for G Suite is different than regular GMail), but if you are you could try Fastmail or ProtonMail. 
+
+## Random screenshots:
+
+![picture of my Chrome tab bar](https://user-images.githubusercontent.com/17338790/74570784-91286180-4f42-11ea-8d76-71f3713f1c3e.png)

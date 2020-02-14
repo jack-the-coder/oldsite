@@ -145,7 +145,12 @@ hr {
   @extend %vertical-rhythm;
 
   .highlighter-rouge & {
-    background: $sbase02;
+    @media (prefers-color-scheme: dark) {
+      background: $sbase02;
+    }
+    @media (prefers-color-scheme: light) {
+      background: $sbase2;
+    }
   }
 
   .c     { color: $sbase0; font-style: italic } // Comment

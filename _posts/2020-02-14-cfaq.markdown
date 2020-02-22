@@ -8,7 +8,7 @@ The fact that C is the dominant programming language for everything low-level is
 
 The intended audience of this post is someone who has programming experience in another language and has messed around in C but wants to expand their knowledge of how it really works under the hood. 
 
-***Note**: This is an unfinished, living document. You're reading version 0.1.*
+***Note**: This is an unfinished, living document. You're reading version 0.2.*
 
 *Find an error or want to add something? Please email [cfaq@snazz.xyz](mailto:cfaq@snazz.xyz). Thanks!*
 
@@ -121,5 +121,15 @@ case 2:
 ```
 Since I forgot the `break;` after `doSomething();`, both `doSomething()` and `doSomethingElse()` would be called if `something()` returned 0. This behavior was probably somebody's way to approximate what they liked to do in assembly in C, but it has caused countless confusing issues for new C coders.
 
-## MORE WILL BE ADDED
-I figured I might as well post something unfinished instead of toiling away for days before being able to post it in its finished form.
+### You can forget to return anything from a function
+Think of the following function:
+```c
+unsigned int doSomething(int a) {
+  int b = globalVariable * doSomethingElse(a);
+}
+```
+What happens if we do something like this?
+```c
+unsigned int c = doSomething(4);
+```
+Despite telling the compiler that I wanted to have my function return an `unsigned int`, I'm not returning anything. According to the C spec, the value of the variable `c` is undefined behavior. If `doSomething` were a longer function (or worse, if I had a few `if` statements that included `return`, but not every possible branch returned something), it might be easy to forget to return something at all. To fix this one, be sure to use the `-Wall` flag so you get a warning before anything goes really wrong.

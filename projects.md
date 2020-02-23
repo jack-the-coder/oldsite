@@ -6,7 +6,7 @@ permalink: /projects/
 Most of these aren't nearly as fleshed-out as I would like them to be, but I figured someone might find something interesting. Right now I'm starting work on something more serious that I hope can be published here in the coming months.
 
 ## [Prime](https://github.com/jack-the-coder/prime)
-![cool pattern](https://raw.githubusercontent.com/jack-the-coder/prime/master/8642.png)
+![cool pattern](https://raw.githubusercontent.com/jack-the-coder/prime/master/4321.png)
 This mini-project arose from my interest in finding out if there was any pattern to the modulus of prime numbers. The program makes a simple square image where large rectangles (bigger than a single pixel) are centered over a pixel whose number (starting at the top-left corner) is prime. Since the process wraps around each row of the image, you can see some interesting patterns occur. In that repository, I have a few images that highlight the effect and a shell script to run the program many times, making images from 1x1 to a specified size.
 
 **Technologies**: C, Cairo

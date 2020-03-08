@@ -17,7 +17,7 @@ title: the snazzblog
 description: >- # this means to ignore newlines until "baseurl:"
   the snazziest site there ever was
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "www.snazz.xyz" # the base hostname & protocol for your site, e.g. http://example.com
+url: "oldsite.snazz.xyz" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  jack-the-coder
 
 # Build settings
